@@ -73,7 +73,7 @@ module "lambda" {
     debug                 = tostring(var.debug)
   }
   s3_existing_package = {
-    bucket = "coralogix-serverless-repo-${data.aws_region.this.name}"
+    bucket = var.coralogix_serverless_repo_region == "" ? "coralogix-serverless-repo-${data.aws_region.this.name}" : "coralogix-serverless-repo-${var.coralogix_serverless_repo_region}"
     key    = "${var.integration_type}.zip"
   }
   policy_path                             = "/coralogix/"
@@ -127,7 +127,7 @@ module "lambdaSSM" {
     debug                   = tostring(var.debug)
   }
   s3_existing_package = {
-    bucket = "coralogix-serverless-repo-${data.aws_region.this.name}"
+    bucket = var.coralogix_serverless_repo_region == "" ? "coralogix-serverless-repo-${data.aws_region.this.name}" : "coralogix-serverless-repo-${var.coralogix_serverless_repo_region}"
     key    = "${var.integration_type}.zip"
   }
   policy_path                             = "/coralogix/"

@@ -131,3 +131,10 @@ variable "sns_topic_name" {
   type        = string
   default     = ""
 }
+
+
+variable "coralogix_serverless_repo_region" {
+  description = "The Coralogix s3 location region, which is used to fetch lambda code from"
+  type        = string
+  default     = ""
+}
